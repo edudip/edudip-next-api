@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2018-11-08**
+**Version 2018-11-12**
 
 ## Einsatz
 
@@ -18,7 +18,7 @@ Sollte ein Endpunkt eine Liste von Parametern benötigen, so sind diese Paramete
 
 Jede API Anfrage sollte zudem den HTTP Header ```Accept``` mit dem Wert ```application/json``` beinhalten.
 
-Beispiel für eine Implementierung mittels PHP und cURL:
+Beispiel für eine Implementierung einer POST Anfrage mittels PHP und cURL:
 
 ```
 $ch = curl_init();
@@ -157,7 +157,7 @@ Ein Teilnehmer-Objekt hat folgende Properties:
 |----|------|------|
 |firstname|String|Vorname des Teilnehmers|
 |lastname|String|Nachname des Teilnehmers|
-|auth_key|String|Authentifizierungs Schlüssel. Wird benötigt, um den Webinar-Raum zu betreten|
+|auth_key|String|Authentifizierungs Schlüssel. Wird benötigt, um den Webinar-Raum zu betreten und sich zu Webinaren abzumelden|
 |email|String|E-Mail Adresse des Teilnehmers|
 |created_at|String|Zeitpunkt der Registrierung|
 |updated_at|String|Zeitpunkt der letzten Änderung des Datensatzes|
@@ -201,7 +201,7 @@ Rückgabe im Erfolgsfall:
          "date": [Webinar-Date Objekt]
     }
 
-### Bestehenden Termin zu ein Webinar löschen
+### Bestehenden Termin eines Webinars löschen
 
 **Endpunkt:** DELETE /api/webinars/[Webinar-Id]/dates/[Webinar-Date-Id]
 
@@ -252,7 +252,7 @@ Rückgabe im Fehlerfall:
         ]
     }
 
-Das Feld Auth Key enthält den persönlichen Authorisierungs-Schlüssel, mit dem sich ein Teilnehmer im Raum identifizieren kann. Dieser Schlüssel ist bereits in den Webinar-Raum-Link in der Property ```room_link``` eingesetzt. Der Teilnehmer gelingt über die Property ```room_link``` direkt in den Webinar Raum zu dem entsprechenden Termin. Jeder Webinar-Termin besitzt einen eigenen Link. Der Link ist personalisiert und nur für diesen Teilnehmer gedacht.
+Das Feld ```auth_key``` enthält den persönlichen Authorisierungs-Schlüssel, mit dem sich ein Teilnehmer im Raum identifizieren kann. Dieser Schlüssel ist bereits in den Webinar-Raum-Link in der Property ```room_link``` eingesetzt. Der Teilnehmer gelingt über die Property ```room_link``` direkt in den Webinar Raum zu dem entsprechenden Termin. Jeder Webinar-Termin besitzt einen eigenen Link. Der Link ist personalisiert und nur für diesen Teilnehmer gedacht.
 
 **Fehlercodes:**
 
@@ -263,7 +263,14 @@ Das Feld Auth Key enthält den persönlichen Authorisierungs-Schlüssel, mit dem
 |date_not_bookable|Der angegebene Webinartermin (Post Parameter "webinar_date") ist nicht mehr buchbar oder liegt in der Vergangenheit|
 |participant_exists|Ein Teilnehmer mit der angegeben E-Mail Adresse wurde bereits registriert|
 
+### Einen Teilnehmer zu einem Webinar abmelden
 
+**Endpunkt** POST /api/webinars/[Webinar-Id]/cancelRegistration
+
+|Parameter|Datentyp|Beschreibung|
+|----|----|-------|
+|email|String|E-Mail Adresses des Teilnehmers|
+|auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden")|
 
 ### Moderator zu einem Webinar hinzufügen
 
