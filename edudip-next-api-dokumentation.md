@@ -49,7 +49,7 @@ Unter https://github.com/edudip/next-api-client kann eine Beispiel-Implementieru
 
 ### Authentifizierte Requests mittels API Token
 
-Alle in diesem Dokument beschriebenen API Anfragen müssen authentifiziert werden. Zur Authentifizierung von Anfragen werden so genannte API Tokens verwendet. Ein API-Token ist ein ASCII String von einer Länge von 60 Zeichen. Jeder API Token ist einem Benutzer in edudip next zugeordnet. Jede Aktion die über die API durchgeführt wird somit über den API Token einem Teammitglied zugeordnet und besitzt somit die gleichen Zugriffsrechte wie dieses Teammitglied. 
+Alle in diesem Dokument beschriebenen API Anfragen müssen authentifiziert werden. Zur Authentifizierung von Anfragen werden so genannte API Tokens verwendet. Ein API-Token ist ein ASCII String von einer Länge von 60 Zeichen. Jeder API Token ist einem Benutzer in edudip next zugeordnet. Jede Aktion die über die API durchgeführt wird somit über den API Token einem Teammitglied zugeordnet und besitzt somit die gleichen Zugriffsrechte wie dieses Teammitglied.
 
 Der API-Token muss in jeder API Anfrage als HTTP Header mit dem Namen "Authorization" mitgeschickt werden:
 
@@ -62,8 +62,9 @@ Api-Tokens dürfen nicht an Dritte weitergegeben werden und sollten sicher aufbe
 
 ### Erstellen von API Tokens
 
-Um einen API Token zu generieren, loggen Sie sich bitte mit Ihrer E-Mail Adresse und Passwort in edudip next ein. Klicken Sie nun auf den Menüpunkt "Einstellungen" auf der linken Seite. Scrollen Sie nun so weit nach unten bis zu dem Punkt "API-Tokens". Klicken Sie nun auf die Schaltfläche "Weiteren API-Token generieren". Das System fordert Sie nun auf, welchem Teammitglied dieser API-Token zugeordnet werden soll. Wählen Sie das gewünschte Teammitglied aus und klicken danach auf "API-Token" generieren.
+Um einen API Token zu generieren, loggen Sie sich bitte mit Ihrer E-Mail Adresse und Passwort in edudip next ein. Klicken Sie nun auf den Menüpunkt "Einstellungen" auf der linken Seite. Scrollen Sie nun so weit nach unten bis zu dem Punkt "API-Tokens". Klicken Sie nun auf die Schaltfläche "Weiteren API-Token generieren". Das System fordert Sie nun auf, anzugeben welchem Teammitglied dieser API-Token zugeordnet werden soll. Wählen Sie das gewünschte Teammitglied aus und klicken danach auf "API-Token" generieren.
 
+Hinweis: Sollte der Punkt "API-Token" nicht erscheinen oder Sie keine Möglichkeit haben einen API-Token zu generieren, so wurde die API für Ihren Account nicht freigeschaltet. Wenden Sie sich in diesem Fall bitte an vertrieb@edudip.com.
 
 ## Webinare
 
@@ -110,7 +111,7 @@ Dieser API Endpunkt kann dazu genutzt werden, neue Webinare anzulegen. Folgende 
 |Parameter|Datentyp|Benötigt|Beschreibung|
 |----|------|:---:|------|
 |title|String|✓|Der Titel/Name des Webinars. Muss mindestens 5 und maximal 255 Zeichen umfassen|
-|max_participants|Uint|✓|Maximale Anzahl an Teilnehmern des Webinars. Muss mindestens auf 1 gesetzt werden. Der Höchstwert hängt von Ihrem gebuchten edudip next Abo ab|
+|max_participants|Uint|✓|Maximale Anzahl an Teilnehmern des Webinars. Muss mindestens auf 1 gesetzt werden. Der Höchstwert hängt von Ihrem gebuchten edudip next Abo ab.|
 |recording|Uint|✓|Soll ein Videomitschnitt des Webinars aufgezeichnet werden? 1 = Das Webinar wird aufgezeichnet; 0 = Das Webinar nicht aufzeichnen|
 |registration_type|String|✓|Kann die Werte "series" oder "date" annehmen. "series" = Terminreihe: Teilnehmer registrieren sich für alle Termine gleichzeitig.; "date" = Alternativtermine: Teilnehmer melden sich für jeden Termin einzeln an.|
 |access|String|✓|Kann die Werte "all" oder "invitation" annehmen. "all" = Jeder darf sich anmelden, "invitation" = Nur eingeladene Teilnehmer dürfen sich anmelden|
@@ -144,12 +145,12 @@ Das zurückgelieferte Webinar-Objekt ist weitesgehend identisch mit dem Webinar-
 
 | Property|Datentyp|Beschreibung|
 |----|------|------|
-|registration\_type\_editable|Boolean|Steht dieser Wert auf ```true```, kann die Anmeldeart (Property ```registration_type``` nicht mehr geändert werden. Dies bedeutet, dass die Anmeldeart nicht mehr geändert werden kann (Alternativtermine/Terminreihe).|
+|registration\_type\_editable|Boolean|Steht dieser Wert auf ```true```, kann die Anmeldeart (Alternativtermine/Terminreihe, Property ```registration_type```) nicht mehr geändert werden.|
 |recording|Uint|1 = Das Webinar wird aufgezeichnet; 0 = Das Webinar wird nicht aufgezeichnet|
 |slug|String|Der SEO Slug, der für die Webinar Landingpage URL benutzt wird|
 |participants|Array|Eine Liste mit angemeldeten Teilnehmern zu diesem Webinar. Eine Beschreibung eines einzelnen Teilnehmer-Objektes befindet sich unterhalb dieser Tabelle|
 |dialin_enabled|Uint|**Dieses Feature ist zur Zeit ohne Funktion** 0 = Telefoneinwahl nicht verfügbar; 1 = Telefoneinwahl für dieses Webinar ist verfügbar|
-|recordings|Array|Eine Liste von Aufzeichnungen, die zu diesem Webinar aufgezeichnet wurden.|
+|recordings|Array|Eine Liste von Aufzeichnungen, die zu diesem Webinar angefertigt wurden.|
 
 Ein Teilnehmer-Objekt hat folgende Properties:
 
@@ -191,7 +192,7 @@ Als Rückgabe im Erfolgsfall wird ein JSON Objekt ausgegeben, mit der Property `
 |Property|Datentyp|Beschreibung|
 |----|------|------|
 |date|String|Datum und Uhrzeit, an dem der Termin stattfinden soll. Format: ```YYYY-MM-DD HH:MM:SS``` (z.B. 2019-12-01 12:30:00)|
-|duration|Uint|Dauer des Termins in Minuten|
+|duration|Uint|Dauer des Termins in Minuten.|
 
 
 Rückgabe im Erfolgsfall:
@@ -205,6 +206,8 @@ Rückgabe im Erfolgsfall:
 
 **Endpunkt:** DELETE /api/webinars/[Webinar-Id]/dates/[Webinar-Date-Id]
 
+**Bitte beachten**, dass der letzte Termin eines Webinars nicht gelöscht werden kann, d.h. zu jedem Webinar muss mindestens ein Termin existieren.
+
 ### Einen Teilnehmer an einem Webinar anmelden
 
 **Endpunkt:** POST /api/webinars/[Webinar-Id]/register-participant
@@ -217,32 +220,32 @@ Registriert einen Teilnehmer zum angegebenen Webinar. Folgende POST Parameter k�
 |email|String|✓|E-Mail Adresse des Teilnehmers|
 |firstname|String|✓|Vorname des Teilnehmers|
 |lastname|String|✓|Nachname des Teilnehmers|
-|webinar_date|String|✕|Datum im Format ```YYYY-MM-DD HH:MM:SS```, sofern sich nur für einen Termin angemeldet werden soll (wenn Property ```registration_type``` des Webinars auf "date" (Einzeltermin) steht)|
+|webinar_date|String|✕|Datum im Format ```YYYY-MM-DD HH:MM:SS```, sofern sich nur für einen Termin angemeldet werden soll (wenn Property ```registration_type``` des Webinars auf "date" (Einzeltermin) steht).|
 
 Rückgabe im Fehlerfall:
 
      {
-     	"success": false,
-     	"error": {
-     		"message": String, Fehlermeldung
-     		"type": Fehler-Code bzw. eindeutiger Identifier der Fehlerklasse (siehe unten)
-     		"fields": [
-     			// Optional, nur wenn "type" Wert "form_validation" hat. Dann Array mit Feldnamen, die nicht oder fehlerhaft ausgefüllt wurden
-     		]
-     	}
+        "success": false,
+        "error": {
+            "message": String, Fehlermeldung
+            "type": Fehler-Code bzw. eindeutiger Identifier der Fehlerklasse (siehe unten)
+            "fields": [
+                // Optional, nur wenn "type" Wert "form_validation" hat. Dann Array mit Feldnamen, die nicht oder fehlerhaft ausgefüllt wurden
+            ]
+        }
      }
 
 **Rückgabe im Erfolgsfall:**
 
     {
-		"success": true,
-		"participant": {
-			"auth_key": String,
-			"firstname": String,
-			"lastname": String,
+        "success": true,
+        "participant": {
+            "auth_key": String,
+            "firstname": String,
+            "lastname": String,
             "updated_at": String der Form YYYY-MM-DD HH:ii:ss,
             "created_at": String  der Form YYYY-MM-DD HH:ii:ss
-		},
+        },
         "registeredDates": [
             {
                 "date": String der Form YYYY-MM-DD HH:ii:ss,
@@ -270,7 +273,7 @@ Das Feld ```auth_key``` enthält den persönlichen Authorisierungs-Schlüssel, m
 |Parameter|Datentyp|Beschreibung|
 |----|----|-------|
 |email|String|E-Mail Adresses des Teilnehmers|
-|auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden")|
+|auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
 
 ### Moderator zu einem Webinar hinzufügen
 
