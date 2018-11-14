@@ -64,7 +64,7 @@ Api-Tokens dürfen nicht an Dritte weitergegeben werden und sollten sicher aufbe
 
 Um einen API Token zu generieren, loggen Sie sich bitte mit Ihrer E-Mail Adresse und Passwort in edudip next ein. Klicken Sie nun auf den Menüpunkt "Einstellungen" auf der linken Seite. Scrollen Sie nun so weit nach unten bis zu dem Punkt "API-Tokens". Klicken Sie nun auf die Schaltfläche "Weiteren API-Token generieren". Das System fordert Sie nun auf, anzugeben welchem Teammitglied dieser API-Token zugeordnet werden soll. Wählen Sie das gewünschte Teammitglied aus und klicken danach auf "API-Token" generieren.
 
-Hinweis: Sollte der Punkt "API-Token" nicht erscheinen oder Sie keine Möglichkeit haben einen API-Token zu generieren, so wurde die API für Ihren Account nicht freigeschaltet. Wenden Sie sich in diesem Fall bitte an vertrieb@edudip.com.
+Hinweis: Sollte der Punkt "API-Token" nicht erscheinen oder Sie keine Möglichkeit haben einen API-Token zu generieren, so wurde die API für Ihren Account nicht freigeschaltet. Wenden Sie sich in diesem Fall bitte an sales@edudip.com.
 
 ## Webinare
 
