@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2018-11-12**
+**Version 2018-12-18**
 
 ## Einsatz
 
@@ -275,6 +275,12 @@ Das Feld ```auth_key``` enthält den persönlichen Authorisierungs-Schlüssel, m
 |email|String|E-Mail Adresses des Teilnehmers|
 |auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
 
+### Einen Teilnehmer löschen
+
+**Endpunkt:** DELETE /api/participants/[E-Mail-Adresse des Teilnehmers]
+
+Löscht alle Teilnehmerdaten aus edudip next. Kann zum Beispiel dazu verwendet werden, um Anfragen nach Art. 17 DSVGO auf Recht auf Löschung, nachzukommen. Der Unterschied zu dem Endpunkt `POST /api/webinars/[Webinar-Id]/cancelRegistration` besteht darin, dass nach einer Abmeldung die Daten des Teilnehmers im System gespeichert bleiben, um diese weiterverarbeiten zu können.
+
 ### Moderator zu einem Webinar hinzufügen
 
 **Endpunkt:** POST /api/webinars/[Webinar-Id]/moderators/add
@@ -294,3 +300,7 @@ Fügt einem bestehenden Webinar einen neuen (Co-)Moderator hinzu. Es können bis
 **Endpunkt:** DELETE /api/webinars/[Webinar-Id]/moderators/[Moderator-Email]
 
 Entfernt einen (Co-)Moderatoren wieder von einem Webinar.
+h|Parameter|Datentyp|Beschreibung|
+|----|----|-------|
+|email|String|E-Mail Adresses des Teilnehmers|
+|auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
