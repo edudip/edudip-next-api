@@ -300,7 +300,8 @@ Fügt einem bestehenden Webinar einen neuen (Co-)Moderator hinzu. Es können bis
 **Endpunkt:** DELETE /api/webinars/[Webinar-Id]/moderators/[Moderator-Email]
 
 Entfernt einen (Co-)Moderatoren wieder von einem Webinar.
-h|Parameter|Datentyp|Beschreibung|
+
+|Parameter|Datentyp|Beschreibung|
 |----|----|-------|
 |email|String|E-Mail Adresses des Teilnehmers|
 |auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
