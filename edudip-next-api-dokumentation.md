@@ -110,7 +110,7 @@ Dieser API Endpunkt kann dazu genutzt werden, neue Webinare anzulegen. Folgende 
 
 |Parameter|Datentyp|Benötigt|Beschreibung|
 |----|------|:---:|------|
-|title|String|✓|Der Titel/Name des Webinars. Muss mindestens 5 und maximal 255 Zeichen umfassen|
+|title|String|✓|Der Titel/Name des Webinars. Muss mindestens 5 und maximal 190 Zeichen umfassen|
 |max_participants|Uint|✓|Maximale Anzahl an Teilnehmern des Webinars. Muss mindestens auf 1 gesetzt werden. Der Höchstwert hängt von Ihrem gebuchten edudip next Abo ab.|
 |recording|Uint|✓|Soll ein Videomitschnitt des Webinars aufgezeichnet werden? 1 = Das Webinar wird aufgezeichnet; 0 = Das Webinar nicht aufzeichnen|
 |registration_type|String|✓|Kann die Werte "series" oder "date" annehmen. "series" = Terminreihe: Teilnehmer registrieren sich für alle Termine gleichzeitig.; "date" = Alternativtermine: Teilnehmer melden sich für jeden Termin einzeln an.|
