@@ -305,3 +305,23 @@ Entfernt einen (Co-)Moderatoren wieder von einem Webinar.
 |----|----|-------|
 |email|String|E-Mail Adresses des Teilnehmers|
 |auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
+
+## Aufzeichnungen
+
+### Alle Aufzeichnungen auflisten
+
+**Endpunkt** GET /api/recordings
+
+Folgende GET-Parameter können dem API Endpunkt zwecks Paginierung der Ergebnisse übergeben werden:
+
+|Parameter|Datentyp|Benötigt|Beschreibung|
+|----|----|-------|--------|
+|offset|Uint|✕|Index des ersten Elementes, dass ausgegeben werden soll (0 enspricht erstem Element der Liste)|
+|limit|Uint|✕|Anzahl der ausgegebenen Elemente|
+
+### Download URL einer einzelnen Aufzeichnung ausgeben
+
+**Enpunkt** GET /api/recordings/[Recording-Id]/download-url
+
+Gibt eine URL zurück, mit der die Aufzeichnung als MP4 Datei heruntergeladen werden kann. Die Recording-Id kann über den Endpunkt GET /api/records ausgelesen werden. Bitte beachten Sie, dass die Download-URLs nur zeitlich begrenzt gültig sind. In der Regel sind die URLs ca. 2 Stunden gültig.
+
