@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2018-12-18**
+**Version 2019-02-04**
 
 ## Einsatz
 
