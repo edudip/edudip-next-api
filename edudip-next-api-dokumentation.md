@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-02-04**
+**Version 2019-02-05**
 
 ## Einsatz
 
@@ -318,6 +318,9 @@ Folgende GET-Parameter können dem API Endpunkt zwecks Paginierung der Ergebniss
 |----|----|-------|--------|
 |offset|Uint|✕|Index des ersten Elementes, dass ausgegeben werden soll (0 enspricht erstem Element der Liste)|
 |limit|Uint|✕|Anzahl der ausgegebenen Elemente|
+
+
+**Bitte beachten**, dass die Erstellung der Aufzeichnungen Zeit in Anspruch nimmt und Aufzeichnungen nicht unmittelbar nach dem Webinar zur Verfügung stehen. Es dauert in der Regel etwa die Hälfte der Zeit, die das Webinar gedauert hat. Aus diesem Grund kann es sein, dass Sie in Ihrer Anwendung - je nach Anwenungsfall - einen Polling-Mechanismus zur implementieren müssen, der auf das Vorhandensein von Aufzeichnungen zu einem Webinar prüft. Wir empfehlen hierbei einen Zeitintervall von 10 Minuten.
 
 ### Download URL einer einzelnen Aufzeichnung ausgeben
 
