@@ -306,6 +306,26 @@ Entfernt einen (Co-)Moderatoren wieder von einem Webinar.
 |email|String|E-Mail Adresses des Teilnehmers|
 |auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
 
+### Anwesenheitsdauer der anwesenden Teilnehmer eines Webinar-Termins auslesen
+
+**Endpunkt:** GET /api/webinars/[Webinar-Id]/[Webinar-Termin-Id]/participant-attendance
+
+Die Rückgabe der Anwesenheitsdauer wird in der Form eines JSON-Objektes ausgeliefert, wobei die E-Mail Adresse des Teilnehmers als Property und die Anwesenheitsdauer in Minuten als Wert gesetzt werden.
+
+Die Webinar-Termin-Id des Termins, für welchen die Anwesenheitsdauer ausgelesen werden soll, kann über den API Endpunkt ```Ein einzelnes Webinar auslesen``` ausgelesen werden.
+
+**Beispiel einer Rückgabe im Erfolgsfall**
+
+    {
+        "success": true,
+        "attendance": {
+        	"max.mustermann@example.com": 12,
+	     	"john.doe@example.com": 31,
+ 			  ...
+        }
+    }
+
+
 ## Aufzeichnungen
 
 ### Alle Aufzeichnungen auflisten
