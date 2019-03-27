@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-02-05**
+**Version 2019-03-27**
 
 ## Einsatz
 
@@ -206,7 +206,7 @@ Rückgabe im Erfolgsfall:
 
 **Endpunkt:** DELETE /api/webinars/[Webinar-Id]/dates/[Webinar-Date-Id]
 
-**Bitte beachten**, dass der letzte Termin eines Webinars nicht gelöscht werden kann, d.h. zu jedem Webinar muss mindestens ein Termin existieren.
+**Bitte beachten**, dass der letzte Termin eines Webinars nicht gelöscht werden kann, d.h. zu jedem Webinar muss mindestens ein Termin existieren. Desweiteren werden, wenn ein Termin gelöscht wird, auch alle zugehörigen Daten gelöscht. Darunter fallen unter anderem alle Aufzeichnungen und Anmeldedaten von Teilnehmern zu diesem Termin. Wir empfehlen Ihnen daher vor dem Löschen eines Termins alle Aufzeichnungen und relevanten Daten zu sichern.
 
 ### Einen Teilnehmer an einem Webinar anmelden
 
