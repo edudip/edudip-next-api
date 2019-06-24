@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-03-27**
+**Version 2019-06-24**
 
 ## Einsatz
 
@@ -98,6 +98,7 @@ Die Property "success" wird im Erfolgsfall auf "true" gesetzt. Die Property "tot
 |max_participants|Uint|Anzahl der maximalen Teilnehmer am Webinar.|
 |moderators|Array|Eine Liste mit (Co-)Moderatoren des Webinars. Der Ersteller des Webinars ist immer als Hauptmoderator eingetragen.|
 |participants_count|Uint|Anzahl der bereits angemeldeten Teilnehmer zu diesem Webinar|
+|landingpage|Array|Enthält die relevanten Informationen der Landingpage. Darunter sind die Eigenschaften ```url``` für die Url der Landingpage, ```image``` ein Objekt mit Informationen zu dem hinterlegten Bild oder Youtube Video, ```description_short``` und ```description``` für die Kurz- (limitiert auf 120 Zeichen) und Langbeschreibung des Webinars.|
 |created_at|String|Zeitpunkt der Erstellung des Webinars in der Form ```YYYY-MM-DD HH:ii:ss```|
 |updated_at|String|Zeitpunkt der letzten Änderung des Webinars in der Form ```YYYY-MM-DD HH:ii:ss```|
 
