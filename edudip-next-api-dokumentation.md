@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-06-24**
+**Version 2019-09-26**
 
 ## Einsatz
 
@@ -118,6 +118,7 @@ Dieser API Endpunkt kann dazu genutzt werden, neue Webinare anzulegen. Folgende 
 |access|String|✓|Kann die Werte "all" oder "invitation" annehmen. "all" = Jeder darf sich anmelden, "invitation" = Nur eingeladene Teilnehmer dürfen sich anmelden|
 |dates|String|✓|JSON enkodiertes Array mit einzelnen Datums-Objekten, an denen das Webinar staffinden soll. Jedes Datum-Objekt muss zwei Properties besitzen: "date" mit dem Datums-String in der Form YYYY-MM-DD HH:MM:SS, an dem der Termin stattfinden soll, sowie die Property "duration", die in Minuten angibt, wie lange der Termin dauert. Beispiel: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
 |users_id|Uint|✕|Legt fest, welches Teammitglied der Eigentümer (Hauptmoderator) des Webinars sein soll. Dieses Teammitglied braucht eine Moderatoren-Lizenz. Wenn der Parameter nicht übergeben wird, dann wird der Benutzer, zu dem der API-Token gehört, als Eigentümer eingetragen|
+|language|String|✕|Die Sprache des Webinars. Mögliche Werte: "de" oder "en"|
 
 **Bitte beachten Sie**, dass der Ersteller des Webinars (Hauptmoderator) im Webinar anwesend sein muss, damit dieses gestartet werden kann bzw. automatisch startet.
 
