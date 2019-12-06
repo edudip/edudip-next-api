@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-09-26**
+**Version 2019-12-17**
 
 ## Einsatz
 
@@ -276,6 +276,20 @@ Das Feld ```auth_key``` enthält den persönlichen Authorisierungs-Schlüssel, m
 |----|----|-------|
 |email|String|E-Mail Adresses des Teilnehmers|
 |auth_key|String|Der Authorisierungs Schlüssel des Teilnehmers (siehe "Einen Teilnehmer an einem Webinar anmelden").|
+
+#### Teilnehmer-Avatar hochladen
+
+**Endpunkt** POST /participants-management/participant/[ParticipantEmail]/avatar
+
+|Parameter|Datentyp|Beschreibung|
+|----|----|-------|
+|avatar|multipart/form-data|Bild-Datei welche der neue Avatar des Teilnehmers wird.|
+
+**Bitte beachten**, dass das hochgeladene Bild in den Auflösungen `600x800 px` und `64x64 px` zur Verfügung gestellt wird. Um dies zu gewährleisten wird das Bild von uns automatisch angepasst und beschnitten.
+
+#### Teilnehmer-Avatar löschen
+
+**Endpunkt** DELETE /participants-management/participant/[ParticipantEmail]/avatar
 
 ### Einen Teilnehmer löschen
 
