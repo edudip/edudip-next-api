@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-12-17**
+**Version 2019-01-20**
 
 ## Einsatz
 
@@ -363,4 +363,11 @@ Folgende GET-Parameter können dem API Endpunkt zwecks Paginierung der Ergebniss
 **Enpunkt** GET /api/recordings/[Recording-Id]/download-url
 
 Gibt eine URL zurück, mit der die Aufzeichnung als MP4 Datei heruntergeladen werden kann. Die Recording-Id kann über den Endpunkt GET /api/records ausgelesen werden. Bitte beachten Sie, dass die Download-URLs nur zeitlich begrenzt gültig sind. In der Regel sind die URLs ca. 2 Stunden gültig.
+
+### Aufzeichnungen einen einzelnen Webinars auflisten
+
+**Endpunkt** GET /api/webinars/[Webinar-Id]/recordings
+
+Ließt alle Aufzeichnungen des angegebenen Webinars aus.
+
 
