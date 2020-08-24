@@ -4,13 +4,13 @@
 
 ## Use case
 
-The edudip next API can be used for program control of the edudip next functions. In this way, webinars that have been created can be read out and changed for example. This facilitates integration of edudip next webinars in your own website or application.
+The edudip next API can be used for programatically control the edudip next functions. The API allows ie to create, read and modify webinars. The API can be used to integrate edudip next webinars into your own website or application.
 
 ## General structure
 
 edudip next API is a REST API (https://en.wikipedia.org/wiki/Representational_state_transfer). JSON is used as the format for data exchange.
 
-Each function of the API is represented by a so-called endpoint. Each endpoint consists of a URL, the corresponding HTTP verb (GET, POST, PUT, DELETE), and optionally a list of required parameters.
+Each function of the API is represented by a so-called endpoint. Each endpoint consists of an URL, the corresponding HTTP verb (GET, POST, PUT, DELETE), and optionally a list of required parameters.
 
 In this document we will only specify the path of the endpoint. Each endpoint must therefore always be preceded by ```https://api.edudip-next.com```.
 
@@ -37,13 +37,11 @@ var_dump($response);
 
 ```
 
-For all API requests that could be successfully processed, the HTTP status code 200 OK is returned. If an API request fails, an appropriate HTTP status code is returned.
+In this example API-Token should be replaced by your personal API token (see Authentication for details).
+
+For all API requests that have been successfully processed, the HTTP status code ```200 OK``` is returned. If an API request fails, an appropriate HTTP status code is returned.
 
 If you are missing functions in the API for integration in your application, please contact us and we will be happy to discuss with you whether this functionality can be added to the API.
-
-## Reference implementation
-
-A sample implementation of the edudip next API can be downloaded from https://github.com/edudip/next-api-client. This implementation is based on PHP and cURL and can be easily integrated in your project using composer.
 
 ## Authentication
 
@@ -70,7 +68,7 @@ Note: If the item "API-Token" does not appear or you do not have the option of g
 
 ### List all webinars
 
-**Endpunkt:** GET /api/webinars
+**Endpoint:** GET /api/webinars
 
 Returns a list of all existing webinars.
 
@@ -94,7 +92,7 @@ The property "success” is set to "true" if the project is successful. The prop
 |access|Enum/String ("all" oder "invitation")|Describes who can book the webinar. "all" means that anyone can book the webinar. "invitation" means that the participant may only register for the webinar with an invitation.|
 |registration_type |Enum/String|Beschreibt, ob sich Teilnehmer für einen Termin des Webinars oder immer für alle Termine des Webinars registrieren (Einzel- oder Serientermin)|
 |dates|Array|A list with dates of the webinar|
-|next_date|Object|Includes the next scheduled date of the webinar. Is ```null``` if no upcoming event exists.|
+|next_date|Object|Includes the next scheduled date of the webinar. Is ```null``` if no upcoming date exists.|
 |max_participants|Uint|Maximum number of webinar participants.|
 |moderators|Array|A list of (co)moderators of the webinar. The creator of the webinar is always entered as the main moderator.|
 |participants_count|Uint|Number of participants already registered for this webinar|
@@ -141,7 +139,7 @@ If successful, the return delivers the following JSON return:
     	}
     }
 
-The property ```webinar``` contains an object that contains all values of the requested webinar. In addition, the property stats contains the values ```views_total``` with the number of landing page views that belongs to this webinar. In addition, the ```registrations_total``` value specifies the number of existing registrations for this webinar.
+The ```webinar``` property contains an object that contains all values of the requested webinar. In addition, the property stats contains the values ```views_total``` with the number of landing page views that belongs to this webinar. In addition, the ```registrations_total``` value specifies the number of existing registrations for this webinar.
 
 The returned webinar object is largely identical to the webinar object that is delivered via the ```GET /api/webinars``` endpoint, although the following values are also delivered:
 
@@ -171,7 +169,7 @@ A participant object has the following properties:
 
 ### Modify an existing webinar
 
-** Endpoint:** PUT /api/webinars/[Webinar-Id]
+**Endpoint:** PUT /api/webinars/[Webinar-Id]
 
 Changes the values/settings of an existing webinar. The following parameters can be transferred when calling the endpoint (analogous to HTTP POST requests). It is not necessary to transfer all parameters every time, it is also possible to transfer a subset only:
 
@@ -196,12 +194,11 @@ In case of success a JSON object is returned, with the property ```success``` wi
 |date|String|Date and time when the appointment should take place. Format: ```YYYY-MM-DD HH:MM:SS``` (e.g. 2019-12-01 12:30:00)|
 |duration|Uint|Duration of the appointment in minutes.|
 
-
 Return in case of success:
 
     {
          "success": true,
-         "date": [Webinar-Date Object]
+         "date": [Webinar date object]
     }
 
 ### Delete existing date of a webinar
@@ -237,7 +234,7 @@ Registers a participant for the specified webinar. The following POST parameters
         }
      }
 
-**Rückgabe im Erfolgsfall:**
+**Return in case of success:**
 
     {
         "success": true,
@@ -325,7 +322,7 @@ The return of the attendance time is delivered in the form of a JSON object, whe
 
 The webinar appointment ID of the appointment for which the attendance time should be read out can be read out via the API endpoint ```read out single webinar```.
 
-**Example of a return in case of success**
+**Example of a response in case of success**
 
     {
         "success": true,

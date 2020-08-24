@@ -2,11 +2,19 @@
 
 In diesem Repository finden Sie die Dokumentation der edudip next API. Die Dokumentation wird kontinuierlich angepasst und erweitert.
 
-Dokumentation im PDF Format: 
+**Dokumentation im PDF Format:**
+
 https://github.com/edudip/edudip-next-api/blob/master/edudip-next-api-dokumentation.pdf
 
-Dokumentation im Markdown Format:
+**Dokumentation im Markdown Format:**
+
 https://github.com/edudip/edudip-next-api/blob/master/edudip-next-api-dokumentation.md
+
+**English translations:**
+
+https://github.com/edudip/edudip-next-api/blob/master/edudip-next-api-documentation-en.md
+
+https://github.com/edudip/edudip-next-api/blob/master/edudip-next-api-documentation-en.pdf
 
 ## Updates
 

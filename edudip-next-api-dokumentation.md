@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2019-01-20**
+**Version 2020-08-24**
 
 ## Einsatz
 
@@ -40,10 +40,6 @@ var_dump($response);
 Für alle API Anfragen, die erfolgreich verarbeitet wurden konnten, wird der HTTP-Status-Code ```200 OK``` zurückgeliefert. Sollte eine API Anfrage fehlschlagen, so wird ein passender HTTP-Status-Code zurückgegeben.
 
 Sollten Ihnen Funktionen in der API zur Integration in Ihre Applikation fehlen, treten Sie gerne mit uns in Kontakt, wir erörtern dann gerne mit Ihnen, ob diese Funktionalität in der API ergänzt werden kann.
-
-## Referenzimplementierung
-
-Unter https://github.com/edudip/next-api-client kann eine Beispiel-Implementierung der edudip next API heruntergeladen werden. Diese Implementierung basiert auf PHP und cURL und kann mittels composer leicht in Ihr Projekt eingebunden werden.
 
 ## Authentifizierung
 
