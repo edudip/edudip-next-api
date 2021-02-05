@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2020-08-24**
+**Version 2021-02-05**
 
 ## Einsatz
 
@@ -40,6 +40,12 @@ var_dump($response);
 Für alle API Anfragen, die erfolgreich verarbeitet wurden konnten, wird der HTTP-Status-Code ```200 OK``` zurückgeliefert. Sollte eine API Anfrage fehlschlagen, so wird ein passender HTTP-Status-Code zurückgegeben.
 
 Sollten Ihnen Funktionen in der API zur Integration in Ihre Applikation fehlen, treten Sie gerne mit uns in Kontakt, wir erörtern dann gerne mit Ihnen, ob diese Funktionalität in der API ergänzt werden kann.
+
+Alle Zeiten werden in der Zeitzone "Europe/Berlin" angegeben.
+
+## Referenzimplementierung
+
+Unter https://github.com/edudip/next-api-client kann eine Beispiel-Implementierung der edudip next API heruntergeladen werden. Diese Implementierung basiert auf PHP und cURL und kann mittels composer leicht in Ihr Projekt eingebunden werden.
 
 ## Authentifizierung
 
@@ -95,8 +101,8 @@ Die Property "success" wird im Erfolgsfall auf "true" gesetzt. Die Property "tot
 |moderators|Array|Eine Liste mit (Co-)Moderatoren des Webinars. Der Ersteller des Webinars ist immer als Hauptmoderator eingetragen.|
 |participants_count|Uint|Anzahl der bereits angemeldeten Teilnehmer zu diesem Webinar|
 |landingpage|Array|Enthält die relevanten Informationen der Landingpage. Darunter sind die Eigenschaften ```url``` für die Url der Landingpage, ```image``` ein Objekt mit Informationen zu dem hinterlegten Bild oder Youtube Video, ```description_short``` und ```description``` für die Kurz- (limitiert auf 120 Zeichen) und Langbeschreibung des Webinars.|
-|created_at|String|Zeitpunkt der Erstellung des Webinars in der Form ```YYYY-MM-DD HH:ii:ss```|
-|updated_at|String|Zeitpunkt der letzten Änderung des Webinars in der Form ```YYYY-MM-DD HH:ii:ss```|
+|created_at|String|Zeitpunkt der Erstellung des Webinars in der Form ```Y-m-d H:i:s``` (z.B. 2019-12-01 12:30:00)|
+|updated_at|String|Zeitpunkt der letzten Änderung des Webinars in der Form ```Y-m-d H:i:s``` (z.B. 2019-12-01 12:30:00)|
 
 
 ### Neues Webinar erstellen
@@ -112,7 +118,7 @@ Dieser API Endpunkt kann dazu genutzt werden, neue Webinare anzulegen. Folgende 
 |recording|Uint|✓|Soll ein Videomitschnitt des Webinars aufgezeichnet werden? 1 = Das Webinar wird aufgezeichnet; 0 = Das Webinar nicht aufzeichnen|
 |registration_type|String|✓|Kann die Werte "series" oder "date" annehmen. "series" = Terminreihe: Teilnehmer registrieren sich für alle Termine gleichzeitig.; "date" = Alternativtermine: Teilnehmer melden sich für jeden Termin einzeln an.|
 |access|String|✓|Kann die Werte "all" oder "invitation" annehmen. "all" = Jeder darf sich anmelden, "invitation" = Nur eingeladene Teilnehmer dürfen sich anmelden|
-|dates|String|✓|JSON enkodiertes Array mit einzelnen Datums-Objekten, an denen das Webinar staffinden soll. Jedes Datum-Objekt muss zwei Properties besitzen: "date" mit dem Datums-String in der Form YYYY-MM-DD HH:MM:SS, an dem der Termin stattfinden soll, sowie die Property "duration", die in Minuten angibt, wie lange der Termin dauert. Beispiel: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
+|dates|String|✓|JSON enkodiertes Array mit einzelnen Datums-Objekten, an denen das Webinar staffinden soll. Jedes Datum-Objekt muss zwei Properties besitzen: "date" mit dem Datums-String in der Form Y-m-d H:i:s (z.B. 2019-12-01 12:30:00), an dem der Termin stattfinden soll, sowie die Property "duration", die in Minuten angibt, wie lange der Termin dauert. Beispiel: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
 |users_id|Uint|✕|Legt fest, welches Teammitglied der Eigentümer (Hauptmoderator) des Webinars sein soll. Dieses Teammitglied braucht eine Moderatoren-Lizenz. Wenn der Parameter nicht übergeben wird, dann wird der Benutzer, zu dem der API-Token gehört, als Eigentümer eingetragen|
 |language|String|✕|Die Sprache des Webinars. Mögliche Werte: "de" oder "en"|
 
@@ -189,7 +195,7 @@ Als Rückgabe im Erfolgsfall wird ein JSON Objekt ausgegeben, mit der Property `
 
 |Property|Datentyp|Beschreibung|
 |----|------|------|
-|date|String|Datum und Uhrzeit, an dem der Termin stattfinden soll. Format: ```YYYY-MM-DD HH:MM:SS``` (z.B. 2019-12-01 12:30:00)|
+|date|String|Datum und Uhrzeit, an dem der Termin stattfinden soll. Format: ```Y-m-d H:i:s``` (z.B. 2019-12-01 12:30:00)|
 |duration|Uint|Dauer des Termins in Minuten.|
 
 
@@ -218,7 +224,7 @@ Registriert einen Teilnehmer zum angegebenen Webinar. Folgende POST Parameter k�
 |email|String|✓|E-Mail Adresse des Teilnehmers|
 |firstname|String|✓|Vorname des Teilnehmers|
 |lastname|String|✓|Nachname des Teilnehmers|
-|webinar_date|String|✕|Datum im Format ```YYYY-MM-DD HH:MM:SS```, sofern sich nur für einen Termin angemeldet werden soll (wenn Property ```registration_type``` des Webinars auf "date" (Einzeltermin) steht).|
+|webinar_date|String|✕|Datum im Format ```Y-m-d H:i:s```(z.B. 2019-12-01 12:30:00), sofern sich nur für einen Termin angemeldet werden soll (wenn Property ```registration_type``` des Webinars auf "date" (Einzeltermin) steht).|
 
 Rückgabe im Fehlerfall:
 
@@ -241,12 +247,12 @@ Rückgabe im Fehlerfall:
             "auth_key": String,
             "firstname": String,
             "lastname": String,
-            "updated_at": String der Form YYYY-MM-DD HH:ii:ss,
-            "created_at": String  der Form YYYY-MM-DD HH:ii:ss
+            "updated_at": String der Form Y-m-d H:i:s (z.B. 2019-12-01 12:30:00),
+            "created_at": String  der Form Y-m-d H:i:s (z.B. 2019-12-01 12:30:00)
         },
         "registeredDates": [
             {
-                "date": String der Form YYYY-MM-DD HH:ii:ss,
+                "date": String der Form Y-m-d H:i:s (z.B. 2019-12-01 12:30:00),
                 "key": String,
                 "room_link": String
             }

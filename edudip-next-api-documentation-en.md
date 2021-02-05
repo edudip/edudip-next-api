@@ -1,6 +1,6 @@
 # edudip next API
 
-**Version 2020-08-24** 
+**Version 2021-02-05**
 
 ## Use case
 
@@ -42,6 +42,12 @@ In this example API-Token should be replaced by your personal API token (see Aut
 For all API requests that have been successfully processed, the HTTP status code ```200 OK``` is returned. If an API request fails, an appropriate HTTP status code is returned.
 
 If you are missing functions in the API for integration in your application, please contact us and we will be happy to discuss with you whether this functionality can be added to the API.
+
+All times are specified in the "Europe/Berlin" time zone.
+
+## Reference implementation
+
+At https://github.com/edudip/next-api-client you can download a sample implementation of the edudip next API. This implementation is based on PHP and cURL and can be easily integrated into your project using composer.
 
 ## Authentication
 
@@ -97,8 +103,8 @@ The property "success” is set to "true" if the project is successful. The prop
 |moderators|Array|A list of (co)moderators of the webinar. The creator of the webinar is always entered as the main moderator.|
 |participants_count|Uint|Number of participants already registered for this webinar|
 |landingpage|Array|Contains the relevant landing page information. Among this are the properties ```url``` for the URL of the landing page, ```image``` for an object with information about the deposited image or YouTube video, ```description_short``` and ```description``` for the short (limited to 120 characters) and long description of the webinar.|
-|created_at|String|Time of creation of the webinar in the form ```YYYY-MM-DD HH:ii:ss```|
-|updated_at|String|Time of last modification of the webinar in the form ```YYYY-MM-DD HH:ii:ss```|
+|created_at|String|Time of creation of the webinar in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00)|
+|updated_at|String|Time of last modification of the webinar in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00)|
 
 
 ### Create a new webinar
@@ -114,7 +120,7 @@ This API endpoint can be used to create new webinars. The following parameters m
 |recording|Uint|✓|Should a video clip of the webinar be recorded? 1 = The webinar will be recorded; 0 = Do not record the webinar|
 |registration_type|String|✓|Can accept the values "series" or "date". “series" = appointment series: Participants register for all appointments at the same time; "date" = alternative appointments: Participants register individually for each appointment.|
 |access|String|✓|Can accept the values ```all``` or ```invitation```. ```all``` = anyone may register, ```invitation``` = only invited participants may register|
-|dates|String|✓|JSON-encoded array with individual date objects on which the webinar should take place. Each date object must have two properties: "date" with the date string in the form ```YYYY-MM-DD HH:MM:SS```, on which the appointment should take place, and the property "duration", which specifies in minutes how long the appointment should last. Example: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
+|dates|String|✓|JSON-encoded array with individual date objects on which the webinar should take place. Each date object must have two properties: "date" with the date string in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00), on which the appointment should take place, and the property "duration", which specifies in minutes how long the appointment should last. Example: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
 |users_id|Uint|✕|Defines which team member should be the owner (main moderator) of the webinar. This team member requires a moderator license. If the parameter is not provided, the user to which the API token belongs is entered as the owner|
 |language|String|✕|The language of the webinar. Allowed values: ```de``` or ```en```|
 
@@ -191,7 +197,7 @@ In case of success a JSON object is returned, with the property ```success``` wi
 
 |Property|Data type|Description|
 |----|------|------|
-|date|String|Date and time when the appointment should take place. Format: ```YYYY-MM-DD HH:MM:SS``` (e.g. 2019-12-01 12:30:00)|
+|date|String|Date and time when the appointment should take place. Format: ```Y-m-d H:i:s``` (e.g. 2019-12-01 12:30:00)|
 |duration|Uint|Duration of the appointment in minutes.|
 
 Return in case of success:
@@ -219,7 +225,7 @@ Registers a participant for the specified webinar. The following POST parameters
 |email|String|✓|Participant's email address|
 |firstname|String|✓|Forename of the participant|
 |lastname|String|✓|Surname of the participant|
-|webinar_date|String|✕|Date in the format ```YYYY-MM-DD HH:MM:SS```, if you wish to register for one date only (if property ```registration_type``` of the webinar is set to ```date`` (single appointment)).|
+|webinar_date|String|✕|Date in the format ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00), if you wish to register for one date only (if property ```registration_type``` of the webinar is set to ```date`` (single appointment)).|
 
 **Return in case of error:**
 
@@ -242,12 +248,12 @@ Registers a participant for the specified webinar. The following POST parameters
             "auth_key": String,
             "firstname": String,
             "lastname": String,
-            "updated_at": String, format: YYYY-MM-DD HH:ii:ss,
-            "created_at": String, format: YYYY-MM-DD HH:ii:ss
+            "updated_at": String, format: Y-m-d H:i:s (i.g. 2019-12-01 12:30:00),
+            "created_at": String, format: Y-m-d H:i:s (i.g. 2019-12-01 12:30:00)
         },
         "registeredDates": [
             {
-                "date": String, format YYYY-MM-DD HH:ii:ss,
+                "date": String, format Y-m-d H:i:s (i.g. 2019-12-01 12:30:00),
                 "key": String,
                 "room_link": String
             }
