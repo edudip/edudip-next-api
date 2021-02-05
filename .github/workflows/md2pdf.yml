@@ -1,0 +1,25 @@
+name: Markdown to PDF
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  makepdfs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: mkrakowitzer/actions-makepdfs@v1.3
+      with:
+        markdown_dir: './'
+        output_dir: './'
+    - name: Commit files
+      run: |
+        git config --local user.email "pdf-action@edudip.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
