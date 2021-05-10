@@ -157,6 +157,7 @@ The returned webinar object is largely identical to the webinar object that is d
 |participants|Array|A list of registered participants for this webinar. A description of an individual participant object can be found below this table|
 |dialin_enabled|Uint|**This property is currently without function** 0 = phone dial-in not available; 1 = phone dial-in is available for this webinar|
 |recordings|Array|A list of recordings produced for this webinar.|
+|registration_fields|Array|A list if registrationfield objects|
 
 A participant object has the following properties:
 
@@ -168,6 +169,16 @@ A participant object has the following properties:
 |email|String|Participant's email address|
 |created_at|String|Time of registration|
 |updated_at|String|Time of the last modification of the data record|
+
+A registrationfield object has the following properties:
+
+|Property|Data type|Description|
+|----|------|------|
+|name|String|Field name|
+|mandatory|Boolean|Is it a required field?|
+|type|String|Can contain the following text: textinput, dropdown, checkbox, doubleoptin, email|
+|label|String|Field label|
+|options|null or json|JSON serialized objects each with "label" and "value" data|
 
 ### Delete webinar
 

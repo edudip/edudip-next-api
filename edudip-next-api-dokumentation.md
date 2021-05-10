@@ -155,6 +155,7 @@ Das zurückgelieferte Webinar-Objekt ist weitesgehend identisch mit dem Webinar-
 |participants|Array|Eine Liste mit angemeldeten Teilnehmern zu diesem Webinar. Eine Beschreibung eines einzelnen Teilnehmer-Objektes befindet sich unterhalb dieser Tabelle|
 |dialin_enabled|Uint|**Dieses Feature ist zur Zeit ohne Funktion** 0 = Telefoneinwahl nicht verfügbar; 1 = Telefoneinwahl für dieses Webinar ist verfügbar|
 |recordings|Array|Eine Liste von Aufzeichnungen, die zu diesem Webinar angefertigt wurden.|
+|registration_fields|Array|Array von RegistrierungsFeld-Objekten|
 
 Ein Teilnehmer-Objekt hat folgende Properties:
 
@@ -166,6 +167,16 @@ Ein Teilnehmer-Objekt hat folgende Properties:
 |email|String|E-Mail Adresse des Teilnehmers|
 |created_at|String|Zeitpunkt der Registrierung|
 |updated_at|String|Zeitpunkt der letzten Änderung des Datensatzes|
+
+Ein RegistrierungsFeld-Objekt hat folgende Properties:
+
+|Property|Datentyp|Beschreibung|
+|----|------|------|
+|name|String|Name des Feldes|
+|mandatory|Boolean|Ist es ein Pflichtfeld?|
+|type|String|Kann folgenden Text entalten: textinput, dropdown, checkbox, doubleoptin, email|
+|label|String|Beschriftung des Feldes|
+|options|null oder json|JSON serialisierte Objekte jeweils mit den Daten "label" und "value"|
 
 ### Webinar löschen
 
