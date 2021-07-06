@@ -16,7 +16,7 @@ In diesem Dokument geben wir nur den Pfad des Endpunktes an. Jedem Endpunkt ist 
 
 Sollte ein Endpunkt eine Liste von Parametern benötigen, so sind diese Parameter als ```multipart/form-data``` (https://www.w3.org/TR/html5/sec-forms.html#multipart-form-data) oder ```application/x-www-form-urlencoded``` (https://www.w3.org/TR/html5/sec-forms.html#urlencoded-form-data) in der HTTP Anfrage zu kodieren.
 
-Jede API Anfrage sollte zudem den HTTP Header ```Accept``` mit dem Wert ```application/json``` beinhalten.
+Jede API Anfrage muss zudem den HTTP Header ```Accept``` mit dem Wert ```application/json``` beinhalten.
 
 Beispiel für eine Implementierung einer POST Anfrage mittels PHP und cURL:
 

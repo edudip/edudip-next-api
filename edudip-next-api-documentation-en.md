@@ -16,7 +16,7 @@ In this document we will only specify the path of the endpoint. Each endpoint mu
 
 If an endpoint requires a list of parameters, these parameters must be encoded as multipart/form-data (https://www.w3.org/TR/html5/sec-forms.html#multipart-form-data) or application/x-www-form-urlencoded (https://www.w3.org/TR/html5/sec-forms.html#urlencoded-form-data).
 
-Each API request should also contain the HTTP header ```Accept``` with the value ```application/json```.
+Each API request must also contain the HTTP header ```Accept``` with the value ```application/json```.
 
 Example of an implementation of a POST request using PHP and cURL:
 
