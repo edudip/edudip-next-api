@@ -103,6 +103,7 @@ The property "success” is set to "true" if the project is successful. The prop
 |moderators|Array|A list of (co)moderators of the webinar. The creator of the webinar is always entered as the main moderator.|
 |participants_count|Uint|Number of participants already registered for this webinar|
 |landingpage|Array|Contains the relevant landing page information. Among this are the properties ```url``` for the URL of the landing page, ```image``` for an object with information about the deposited image or YouTube video, ```description_short``` and ```description``` for the short (limited to 120 characters) and long description of the webinar.|
+|number_breakout_rooms|Uint|Numbers of breakout rooms.|
 |created_at|String|Time of creation of the webinar in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00)|
 |updated_at|String|Time of last modification of the webinar in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00)|
 
@@ -123,6 +124,7 @@ This API endpoint can be used to create new webinars. The following parameters m
 |dates|String|✓|JSON-encoded array with individual date objects on which the webinar should take place. Each date object must have two properties: "date" with the date string in the form ```Y-m-d H:i:s``` (i.g. 2019-12-01 12:30:00), on which the appointment should take place, and the property "duration", which specifies in minutes how long the appointment should last. Example: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
 |users_id|Uint|✕|Defines which team member should be the owner (main moderator) of the webinar. This team member requires a moderator license. If the parameter is not provided, the user to which the API token belongs is entered as the owner|
 |language|String|✕|The language of the webinar. Allowed values: ```de``` or ```en```|
+|number_breakout_rooms|Uint|x|Numbers of breakout rooms (min:0, max:6). Only available if this feature is enabled.|
 
 **Please note**, that the creator of the webinar (main moderator) must be present in the webinar in order for it to start or automatically start.
 
