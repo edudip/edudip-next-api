@@ -101,7 +101,7 @@ Die Property "success" wird im Erfolgsfall auf "true" gesetzt. Die Property "tot
 |moderators|Array|Eine Liste mit (Co-)Moderatoren des Webinars. Der Ersteller des Webinars ist immer als Hauptmoderator eingetragen.|
 |participants_count|Uint|Anzahl der bereits angemeldeten Teilnehmer zu diesem Webinar|
 |landingpage|Array|Enthält die relevanten Informationen der Landingpage. Darunter sind die Eigenschaften ```url``` für die Url der Landingpage, ```image``` ein Objekt mit Informationen zu dem hinterlegten Bild oder Youtube Video, ```description_short``` und ```description``` für die Kurz- (limitiert auf 120 Zeichen) und Langbeschreibung des Webinars.|
-|number_breakout_rooms|Uint|Anzahl der Gruppenräume.|
+|number_breakout_rooms|Uint|Anzahl der Breakout Rooms.|
 |created_at|String|Zeitpunkt der Erstellung des Webinars in der Form ```Y-m-d H:i:s``` (z.B. 2019-12-01 12:30:00)|
 |updated_at|String|Zeitpunkt der letzten Änderung des Webinars in der Form ```Y-m-d H:i:s``` (z.B. 2019-12-01 12:30:00)|
 
@@ -122,7 +122,7 @@ Dieser API Endpunkt kann dazu genutzt werden, neue Webinare anzulegen. Folgende 
 |dates|String|✓|JSON enkodiertes Array mit einzelnen Datums-Objekten, an denen das Webinar staffinden soll. Jedes Datum-Objekt muss zwei Properties besitzen: "date" mit dem Datums-String in der Form Y-m-d H:i:s (z.B. 2019-12-01 12:30:00), an dem der Termin stattfinden soll, sowie die Property "duration", die in Minuten angibt, wie lange der Termin dauert. Beispiel: ```[{"date":"2018-01-20 12:00:00","duration":20}]```|
 |users_id|Uint|✕|Legt fest, welches Teammitglied der Eigentümer (Hauptmoderator) des Webinars sein soll. Dieses Teammitglied braucht eine Moderatoren-Lizenz. Wenn der Parameter nicht übergeben wird, dann wird der Benutzer, zu dem der API-Token gehört, als Eigentümer eingetragen|
 |language|String|✕|Die Sprache des Webinars. Mögliche Werte: "de" oder "en"|
-|number_breakout_rooms|Uint|x|Anzahl der Gruppenräume (min:0, max:6). Nur verfügbar, wenn das Feature freigeschaltet ist.|
+|number_breakout_rooms|Uint|x|Anzahl der Breakout Rooms (min:0, max:6). Nur verfügbar, wenn das Feature freigeschaltet ist.|
 
 **Bitte beachten Sie**, dass der Ersteller des Webinars (Hauptmoderator) im Webinar anwesend sein muss, damit dieses gestartet werden kann bzw. automatisch startet.
 
