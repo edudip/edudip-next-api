@@ -8,7 +8,7 @@ jobs:
   makepdfs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: mkrakowitzer/actions-makepdfs@v1.3
       with:
         markdown_dir: './'
