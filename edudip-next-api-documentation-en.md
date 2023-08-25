@@ -45,10 +45,6 @@ If you are missing functions in the API for integration in your application, ple
 
 All times are specified in the "Europe/Berlin" time zone.
 
-## Reference implementation
-
-At https://github.com/edudip/next-api-client you can download a sample implementation of the edudip next API. This implementation is based on PHP and cURL and can be easily integrated into your project using composer.
-
 ## Authentication
 
 ### Authenticated requests with API token
