@@ -1,5 +1,23 @@
 # edudip next API Dokumentation
 
+## ⚠️ Deprecation Notice
+
+> **Diese Dokumentation ist veraltet (deprecated).**
+>
+> Die hier beschriebene **edudip next API Dokumentation wird nicht mehr aktiv gepflegt**.  
+> Bitte verwenden Sie ab sofort ausschließlich die **neue, offizielle API-Dokumentation** unter:
+> 
+> **https://docs.api.edudip.com/**
+> 
+> Die neue Dokumentation enthält:
+> - den aktuellen API-Stand
+> - überarbeitete Endpunkte und Datenmodelle
+> - laufende Aktualisierungen und Erweiterungen
+
+---
+
+Diese Repository-Dokumentation bleibt aus Gründen der Nachvollziehbarkeit bestehen, kann jedoch **inkorrekt oder unvollständig** sein.
+
 In diesem Repository finden Sie die Dokumentation der edudip next API. Die Dokumentation wird kontinuierlich angepasst und erweitert.
 
 **Dokumentation im PDF Format:**
